@@ -51,10 +51,7 @@ const SignUpForm = () => {
               </div>
 
              
-              {/* Terms and Privacy */}
-              <p className="text-sm text-gray-500 mb-6">
-                By creating an account, you agree to the <a href="/" className="text-blue-500">Terms of use</a> and <a href="/" className="text-blue-500">Privacy Policy</a>.
-              </p>
+             
 
               {/* Create Account Button */}
               <button className="w-full bg-gray-300 hover:bg-gray-400 text-white p-4 rounded-lg text-lg">
