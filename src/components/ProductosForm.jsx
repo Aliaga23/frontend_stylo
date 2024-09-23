@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api'; // Asegúrate de que axios esté configurado con la base URL correcta
 import Sidebar from './SideBar'; // Importa tu componente Sidebar
 import { FaBars } from 'react-icons/fa'; // Icono para el botón de abrir el Sidebar
 
@@ -27,7 +27,7 @@ const ProductosCrud = () => {
   // Obtener todos los productos
   const fetchProductos = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/productos');
+      const response = await axios.get('/productos');
       setProductos(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -38,9 +38,9 @@ const ProductosCrud = () => {
   const createOrUpdateProducto = async () => {
     try {
       if (editingId) {
-        await axios.put(`http://localhost:8080/api/productos/${editingId}`, formState);
+        await axios.put(`/productos/${editingId}`, formState);
       } else {
-        await axios.post('http://localhost:8080/api/productos', formState);
+        await axios.post('/productos', formState);
       }
       resetForm();
       fetchProductos();
@@ -52,7 +52,7 @@ const ProductosCrud = () => {
   // Eliminar un producto
   const deleteProducto = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/productos/${id}`);
+      await axios.delete(`/productos/${id}`);
       fetchProductos();
     } catch (error) {
       console.error('Error deleting product:', error);
