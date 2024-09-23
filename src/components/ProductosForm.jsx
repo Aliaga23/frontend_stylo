@@ -124,7 +124,7 @@ const ProductosCrud = () => {
               <input id="sucursalId" type="number" placeholder="Sucursal ID" value={formState.sucursalId} onChange={handleInputChange} className="border p-2 rounded w-full" />
             </div>
             <button onClick={createOrUpdateProducto} className="bg-green-500 text-white p-2 mt-4 rounded">
-              {editingId ? 'Actualizar' : 'Crear'}
+              {editingId ? 'Actualizar' : 'Creear'}
             </button>
           </div>
 

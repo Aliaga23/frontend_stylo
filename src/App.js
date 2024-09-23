@@ -6,19 +6,20 @@ import Productos from './components/ProductosForm';
 import Roles from './components/RolesForm';
 import RolPermiso from './components/RolPermiso';
 import Usuarios from './components/UsuariosForm';
-import AuthPage from './components/AuthFormSwitcher';
 import Inventario from './components/Inventario';
 import CarritoCompras from './components/CarritoCompras';
 import Pedidos from './components/Pedidos';
 import Sucursales from './components/Sucursales';
-
+import SignUpForm from './components/SignUp';
+import SignInForm from './components/SignIn';
 function App() {
   return (
     <Router>
       <div>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<AuthPage />} />
+          <Route path="/login" element={<SignInForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
           <Route path="/usuario" element={<Usuarios />} />
           <Route path="/categoria" element={<Categorias />} />
           <Route path="/producto" element={<Productos />} />
