@@ -87,7 +87,7 @@ const Navbar = () => {
             Women
           </a>
           <a
-            href="/categories"
+            href="/"
             onClick={toggleMenu}
             className="font-medium text-gray-700 hover:underline transition duration-300"
           >
