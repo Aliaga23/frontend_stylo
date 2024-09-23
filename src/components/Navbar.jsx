@@ -23,7 +23,7 @@ const Navbar = () => {
         {/* Right Icons and Hamburger */}
         <div className="flex items-center space-x-6 relative z-10">
           {/* Search Icon (hidden on small screens) */}
-          <a href="/search" className="text-gray-500 hover:text-gray-900 transition duration-300 hidden md:block" aria-label="Buscar">
+          <a href="/" className="text-gray-500 hover:text-gray-900 transition duration-300 hidden md:block" aria-label="Buscar">
             <img src={buscarIcon} alt="Buscar" className="w-6 h-6" />
           </a>
 
@@ -33,7 +33,7 @@ const Navbar = () => {
           </a>
 
           {/* Cart Icon */}
-          <a href="/cart" className="text-gray-500 hover:text-gray-900 transition duration-300" aria-label="Carrito">
+          <a href="/" className="text-gray-500 hover:text-gray-900 transition duration-300" aria-label="Carrito">
             <img src={carritoIcon} alt="Carrito" className="w-6 h-6" />
           </a>
 
@@ -64,13 +64,13 @@ const Navbar = () => {
           <a href="/" className="font-medium text-gray-700 hover:underline transition duration-300">
             Women
           </a>
-          <a href="/categories" className="font-medium text-gray-700 hover:underline transition duration-300">
+          <a href="/" className="font-medium text-gray-700 hover:underline transition duration-300">
             Categories
           </a>
-          <a href="/about" className="font-medium text-gray-700 hover:underline transition duration-300">
+          <a href="/" className="font-medium text-gray-700 hover:underline transition duration-300">
             About
           </a>
-          <a href="/contact" className="font-medium text-gray-700 hover:underline transition duration-300">
+          <a href="/" className="font-medium text-gray-700 hover:underline transition duration-300">
             Contact Us
           </a>
         </div>
@@ -94,14 +94,14 @@ const Navbar = () => {
             Categories
           </a>
           <a
-            href="/about"
+            href="/"
             onClick={toggleMenu}
             className="font-medium text-gray-700 hover:underline transition duration-300"
           >
             About
           </a>
           <a
-            href="/contact"
+            href="/"
             onClick={toggleMenu}
             className="font-medium text-gray-700 hover:underline transition duration-300"
           >

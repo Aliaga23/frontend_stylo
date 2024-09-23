@@ -15,7 +15,7 @@ const SignUpForm = () => {
           {/* Left section with form */}
           <div className="flex flex-col justify-center w-full lg:w-1/2 p-8 lg:p-16 bg-white">
             <div className="w-full lg:w-11/12 mx-auto"> {/* Ajustamos el ancho al 90% */}
-              <h2 className="text-3xl font-semibold mb-4">Welcome to Design Community</h2>
+              <h2 className="text-3xl font-semibold mb-4">Welcome to STYLO</h2>
               <p className="mb-4 text-sm">
                 Already have an account? <a href="/login" className="text-blue-500">Log in</a>
               </p>
@@ -50,14 +50,7 @@ const SignUpForm = () => {
                 />
               </div>
 
-              {/* Email opt-in */}
-              <div className="mb-4 flex items-center">
-                <input type="checkbox" id="optin" className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300 rounded" />
-                <label htmlFor="optin" className="text-gray-700 text-sm">
-                  I want to receive emails about the product, feature updates, events, and marketing promotions.
-                </label>
-              </div>
-
+             
               {/* Terms and Privacy */}
               <p className="text-sm text-gray-500 mb-6">
                 By creating an account, you agree to the <a href="/" className="text-blue-500">Terms of use</a> and <a href="/" className="text-blue-500">Privacy Policy</a>.
