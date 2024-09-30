@@ -95,9 +95,7 @@ const SignInForm = () => {
                 </button>
               </form>
 
-              <p className="mt-6 text-center text-sm">
-                Por el momento para el dashboard ingresar aca <a href="/usuario" className="text-blue-500 hover:underline">Sign up</a>
-              </p>
+            
             </div>
           </div>
         </div>
