@@ -15,7 +15,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   };
 
   const handleLogout = () => {
-    navigate('/');
+    // Elimina el token JWT del localStorage o sessionStorage
+    localStorage.removeItem('token');
+    // Redirige al usuario a la página de inicio de sesión
+    navigate('/login');
   };
 
   const renderMenuItems = (items) => {

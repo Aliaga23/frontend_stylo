@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api';
-import {  FaBars } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import Sidebar from './SideBar';
 
 const Usuarios = () => {
@@ -9,8 +9,8 @@ const Usuarios = () => {
   const [formState, setFormState] = useState({
     nombre: '',
     email: '',
-    rol_id: '',
-    password: ''
+    rolId: '',   // Aquí usamos rolId en lugar de rol_id
+    passwordHash: '' // Usamos passwordHash en lugar de password
   });
   const [editingId, setEditingId] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -63,13 +63,19 @@ const Usuarios = () => {
   };
 
   const resetForm = () => {
-    setFormState({ nombre: '', email: '', rol_id: '', password: '' });
+    setFormState({ nombre: '', email: '', rolId: '', passwordHash: '' });
     setEditingId(null);
   };
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormState({ ...formState, [id]: value });
+  };
+
+  // Obtener el nombre del rol por su ID
+  const getRolNombre = (rolId) => {
+    const rol = roles.find((r) => r.id === rolId);
+    return rol ? rol.nombre : 'Sin rol';
   };
 
   return (
@@ -115,8 +121,8 @@ const Usuarios = () => {
                 className="border p-2 rounded"
               />
               <select
-                id="rol_id"
-                value={formState.rol_id}
+                id="rolId"  // Aquí usamos rolId en lugar de rol_id
+                value={formState.rolId}
                 onChange={handleInputChange}
                 className="border p-2 rounded"
               >
@@ -128,10 +134,10 @@ const Usuarios = () => {
                 ))}
               </select>
               <input
-                id="password"
+                id="passwordHash"  // Aquí usamos passwordHash en lugar de password
                 type="password"
                 placeholder="Contraseña"
-                value={formState.password}
+                value={formState.passwordHash}
                 onChange={handleInputChange}
                 className="border p-2 rounded"
               />
@@ -160,7 +166,7 @@ const Usuarios = () => {
                   <tr key={usuario.id}>
                     <td className="border px-4 py-2">{usuario.nombre}</td>
                     <td className="border px-4 py-2">{usuario.email}</td>
-                    <td className="border px-4 py-2">{usuario.rolId}</td>
+                    <td className="border px-4 py-2">{getRolNombre(usuario.rolId)}</td>
                     <td className="border px-4 py-2">
                       <button
                         onClick={() => {
@@ -168,8 +174,8 @@ const Usuarios = () => {
                           setFormState({
                             nombre: usuario.nombre,
                             email: usuario.email,
-                            rol_id: usuario.rolId,
-                            password: ''
+                            rolId: usuario.rolId,
+                            passwordHash: ''
                           });
                         }}
                         className="bg-yellow-500 text-white p-1 mr-2 rounded"

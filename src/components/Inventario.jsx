@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../api';
-import {  FaBars } from 'react-icons/fa';
+import axios from '../api'; // Suponiendo que tienes configurado axios
+import { FaBars } from 'react-icons/fa';
 import Sidebar from './SideBar';
 
 const Inventario = () => {
@@ -8,14 +8,14 @@ const Inventario = () => {
   const [productos, setProductos] = useState([]);
   const [sucursales, setSucursales] = useState([]);
   const [formState, setFormState] = useState({
-    producto_id: '',
-    sucursal_id: '',
-    cantidad_disponible: ''
+    productoId: '',
+    sucursalId: '',
+    cantidadDisponible: ''
   });
   const [editingId, setEditingId] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Fetch de inventario, productos y sucursales
+  // Fetch inicial de inventario, productos y sucursales
   useEffect(() => {
     fetchInventario();
     fetchProductos();
@@ -31,6 +31,7 @@ const Inventario = () => {
     }
   };
 
+  // Obtener todos los productos (para los selects)
   const fetchProductos = async () => {
     try {
       const response = await axios.get('/productos');
@@ -40,6 +41,7 @@ const Inventario = () => {
     }
   };
 
+  // Obtener todas las sucursales (para los selects)
   const fetchSucursales = async () => {
     try {
       const response = await axios.get('/sucursales');
@@ -49,6 +51,7 @@ const Inventario = () => {
     }
   };
 
+  // Crear o actualizar inventario
   const createOrUpdateInventario = async () => {
     try {
       if (editingId) {
@@ -63,6 +66,7 @@ const Inventario = () => {
     }
   };
 
+  // Eliminar un registro de inventario
   const deleteInventario = async (id) => {
     try {
       await axios.delete(`/inventario/${id}`);
@@ -72,16 +76,19 @@ const Inventario = () => {
     }
   };
 
+  // Reiniciar formulario
   const resetForm = () => {
-    setFormState({ producto_id: '', sucursal_id: '', cantidad_disponible: '' });
+    setFormState({ productoId: '', sucursalId: '', cantidadDisponible: '' });
     setEditingId(null);
   };
 
+  // Manejar cambios en el formulario
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormState({ ...formState, [id]: value });
   };
 
+  // Renderizado del componente
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
       {sidebarOpen && (
@@ -104,13 +111,14 @@ const Inventario = () => {
         </header>
 
         <main className="p-4">
-          {/* Formulario */}
+          {/* Formulario para agregar/editar inventario */}
           <div className="bg-white p-4 rounded shadow-md mb-6">
             <h3 className="text-lg font-semibold">{editingId ? 'Actualizar' : 'Agregar'} Inventario</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Select Producto */}
               <select
-                id="producto_id"
-                value={formState.producto_id}
+                id="productoId"
+                value={formState.productoId}
                 onChange={handleInputChange}
                 className="border p-2 rounded"
               >
@@ -122,9 +130,10 @@ const Inventario = () => {
                 ))}
               </select>
 
+              {/* Select Sucursal */}
               <select
-                id="sucursal_id"
-                value={formState.sucursal_id}
+                id="sucursalId"
+                value={formState.sucursalId}
                 onChange={handleInputChange}
                 className="border p-2 rounded"
               >
@@ -136,15 +145,18 @@ const Inventario = () => {
                 ))}
               </select>
 
+              {/* Input Cantidad Disponible */}
               <input
-                id="cantidad_disponible"
+                id="cantidadDisponible"
                 type="number"
                 placeholder="Cantidad Disponible"
-                value={formState.cantidad_disponible}
+                value={formState.cantidadDisponible}
                 onChange={handleInputChange}
                 className="border p-2 rounded"
               />
             </div>
+
+            {/* Botón para crear/actualizar */}
             <button
               onClick={createOrUpdateInventario}
               className="mt-4 bg-green-500 text-white p-2 rounded"
@@ -173,19 +185,22 @@ const Inventario = () => {
                     <td className="border px-4 py-2">{item.cantidadDisponible}</td>
                     <td className="border px-4 py-2">{item.fechaUltimaActualizacion}</td>
                     <td className="border px-4 py-2">
+                      {/* Botón Editar */}
                       <button
                         onClick={() => {
                           setEditingId(item.id);
                           setFormState({
-                            producto_id: item.producto_id,
-                            sucursal_id: item.sucursal_id,
-                            cantidad_disponible: item.cantidad_disponible
+                            productoId: item.productoId,
+                            sucursalId: item.sucursalId,
+                            cantidadDisponible: item.cantidadDisponible
                           });
                         }}
                         className="bg-yellow-500 text-white p-1 mr-2 rounded"
                       >
                         Editar
                       </button>
+
+                      {/* Botón Eliminar */}
                       <button
                         onClick={() => deleteInventario(item.id)}
                         className="bg-red-500 text-white p-1 rounded"
