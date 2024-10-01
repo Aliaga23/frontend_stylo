@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from '../api'; // Asegúrate de tener axios configurado
 import Navbar from './Navbar'; // Para la barra de navegación
-import { Link } from 'react-router-dom'; // Para navegar a la página de detalle del producto
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { Link, useNavigate } from 'react-router-dom'; // Para navegar
 
 const Cart = () => {
   const [carritoItems, setCarritoItems] = useState([]);  // Estado para los items del carrito
@@ -13,15 +12,9 @@ const Cart = () => {
 
   // Obtener el usuario del localStorage
   const usuarioId = JSON.parse(localStorage.getItem('usuario'));
-  
-  useEffect(() => {
-    if (usuarioId.id) {
-      fetchCarritoItems();
-    }
-  }, [usuarioId]);
 
   // Obtener los items del carrito del usuario actual
-  const fetchCarritoItems = async () => {
+  const fetchCarritoItems = useCallback(async () => {
     try {
       const response = await axios.get(`/carrito-items?usuarioId=${usuarioId.id}`);  // Obtener los items por usuarioId
       let items = response.data;
@@ -35,7 +28,13 @@ const Cart = () => {
     } catch (error) {
       console.error('Error fetching carrito items:', error);
     }
-  };
+  }, [usuarioId.id]);
+
+  useEffect(() => {
+    if (usuarioId && usuarioId.id) {
+      fetchCarritoItems(); // Llamar a la función cuando se tenga el usuarioId
+    }
+  }, [usuarioId, fetchCarritoItems]); // Agregar fetchCarritoItems a las dependencias
 
   // Calcular el total del carrito
   const calcularTotal = (items) => {
