@@ -16,6 +16,7 @@ const Cart = () => {
   
   useEffect(() => {
     if (usuarioId.id) {
+      fetchCarritoItems();
     }
   }, [usuarioId]);
 
