@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api'; // Asegúrate de que axios esté configurado con la base URL correcta
-import {  FaBars } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import Sidebar from './SideBar'; // Asegúrate de tener un componente Sidebar
 
 const Pedidos = () => {
   const [pedidos, setPedidos] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
   const [formState, setFormState] = useState({
-    usuario_id: '',
+    usuarioId: '', // Cambiado a usuarioId para que coincida con el backend
     total: '',
     estado: '',
   });
@@ -22,7 +22,7 @@ const Pedidos = () => {
 
   const fetchPedidos = async () => {
     try {
-      const response = await axios.get('/pedidos');
+      const response = await axios.get('/pedidos'); // Asegúrate de que la ruta sea la correcta
       setPedidos(response.data);
     } catch (error) {
       console.error('Error fetching orders:', error);
@@ -31,7 +31,7 @@ const Pedidos = () => {
 
   const fetchUsuarios = async () => {
     try {
-      const response = await axios.get('/usuarios');
+      const response = await axios.get('/usuarios'); // Ruta para obtener usuarios
       setUsuarios(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -41,8 +41,10 @@ const Pedidos = () => {
   const createOrUpdatePedido = async () => {
     try {
       if (editingId) {
+        // Actualizar pedido
         await axios.put(`/pedidos/${editingId}`, formState);
       } else {
+        // Crear nuevo pedido
         await axios.post('/pedidos', formState);
       }
       fetchPedidos();
@@ -62,7 +64,7 @@ const Pedidos = () => {
   };
 
   const resetForm = () => {
-    setFormState({ usuario_id: '', total: '', estado: '' });
+    setFormState({ usuarioId: '', total: '', estado: '' }); // Reiniciar el formulario
     setEditingId(null);
   };
 
@@ -98,8 +100,8 @@ const Pedidos = () => {
             <h3 className="text-lg font-semibold">{editingId ? 'Actualizar' : 'Agregar'} Pedido</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <select
-                id="usuario_id"
-                value={formState.usuario_id}
+                id="usuarioId"
+                value={formState.usuarioId}
                 onChange={handleInputChange}
                 className="border p-2 rounded"
               >
@@ -165,7 +167,7 @@ const Pedidos = () => {
                         onClick={() => {
                           setEditingId(pedido.id);
                           setFormState({
-                            usuario_id: pedido.usuario_id,
+                            usuarioId: pedido.usuarioId, // Cambiado a usuarioId
                             total: pedido.total,
                             estado: pedido.estado,
                           });

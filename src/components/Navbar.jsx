@@ -33,7 +33,7 @@ const Navbar = () => {
           </a>
 
           {/* Cart Icon */}
-          <a href="/" className="text-gray-500 hover:text-gray-900 transition duration-300" aria-label="Carrito">
+          <a href="/mi-carrito" className="text-gray-500 hover:text-gray-900 transition duration-300" aria-label="Carrito">
             <img src={carritoIcon} alt="Carrito" className="w-6 h-6" />
           </a>
 
@@ -61,18 +61,19 @@ const Navbar = () => {
 
         {/* Menú de navegación (visible en pantallas grandes) */}
         <div className="hidden md:flex space-x-8 absolute right-0 left-0 justify-center">
-          <a href="/" className="font-medium text-gray-700 hover:underline transition duration-300">
-            Women
+          <a href="/envio" className="font-medium text-gray-700 hover:underline transition duration-300">
+            Envio
+          </a>
+          <a href="/productos" className="font-medium text-gray-700 hover:underline transition duration-300">
+            Products
+          </a>
+          <a href="/historial" className="font-medium text-gray-700 hover:underline transition duration-300">
+            Historial
           </a>
           <a href="/" className="font-medium text-gray-700 hover:underline transition duration-300">
-            Categories
+            Inicio
           </a>
-          <a href="/" className="font-medium text-gray-700 hover:underline transition duration-300">
-            About
-          </a>
-          <a href="/" className="font-medium text-gray-700 hover:underline transition duration-300">
-            Contact Us
-          </a>
+        
         </div>
       </div>
 

@@ -38,7 +38,7 @@ const LandingPage = () => {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <p className="text-lg font-medium mt-4">Accessories</p>
+              <p className="text-lg font-medium mt-4">Pantalones</p>
             </div>
 
             {/* Category 2: Shoes */}
@@ -50,7 +50,7 @@ const LandingPage = () => {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <p className="text-lg font-medium mt-4">Shoes</p>
+              <p className="text-lg font-medium mt-4">Blusa</p>
             </div>
 
             {/* Category 3: Clothing */}
@@ -62,7 +62,7 @@ const LandingPage = () => {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <p className="text-lg font-medium mt-4">Clothing</p>
+              <p className="text-lg font-medium mt-4">Vestidos</p>
             </div>
 
             {/* Category 4: Abrigo */}

@@ -45,7 +45,7 @@ const routesConfig = {
         {
           sector: 'Carrito',
           routes: [
-            { path: '/carrito', label: 'Control de Calidad', permiso: 'ver_control_calidad' },
+            { path: '/carrito', label: 'Carrito', permiso: 'ver_control_calidad' },
           ],
         },
       ],
@@ -55,7 +55,7 @@ const routesConfig = {
         {
           sector: 'Sucursales',
           routes: [
-            { path: '/sucursales', label: 'Trazabilidad de Productos', permiso: 'ver_trazabilidad' },
+            { path: '/sucursales', label: 'Sucursales', permiso: 'ver_trazabilidad' },
           ],
         },
       ],
@@ -65,7 +65,7 @@ const routesConfig = {
         {
           sector: 'Pedidos',
           routes: [
-            { path: '/pedido', label: 'Gestión de Lotes', permiso: 'ver_lotes' },
+            { path: '/pedido', label: 'Pedidos', permiso: 'ver_lotes' },
           ],
         },
       ],

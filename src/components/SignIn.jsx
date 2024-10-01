@@ -9,20 +9,23 @@ const SignInForm = () => {
   const [email, setEmailOrUsername] = useState('');
   const [passwordHash, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
-  // Función para manejar el envío del formulario
+  
   const handleSignIn = async (e) => {
     e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
     try {
       const response = await axios.post('https://backendstylo-production.up.railway.app/auth/login', {
-        email, // Enviar el email o nombre de usuario
-        passwordHash // Enviar la contraseña
+        email,         // Enviar el email
+        passwordHash   // Enviar la contraseña
       });
 
       // Si la solicitud tiene éxito, almacenamos el token JWT en localStorage
       const token = response.data.token;
+      const usuario = response.data.usuario;  // Extraer la información del usuario desde la respuesta
+
+      // Guardar el token y la información del usuario en localStorage
       localStorage.setItem('token', token);
+      localStorage.setItem('usuario', JSON.stringify(usuario));  // Almacenar el objeto de usuario como string
 
       // Redirigir al usuario al dashboard o a la página que desees
       window.location.href = '/usuario';
@@ -30,7 +33,8 @@ const SignInForm = () => {
       // Si hay un error, establecer el mensaje de error
       setErrorMessage('Invalid login credentials. Please try again.');
     }
-  };
+};
+
 
   return (
     <>
