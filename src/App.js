@@ -18,6 +18,7 @@ import Cart from './components/Cart';
 import Pago from './components/Pago'; // Importamos el nuevo componente
 import HistorialPedidos from './components/HistorialPedidos';
 import SimulacionEnvio from './components/Envio';
+import ReporteUsuariosInfoCompleta from './components/Reporte';
 function App() {
   return (
     <Router>
@@ -47,6 +48,7 @@ function App() {
           <Route path="/pago" element={<Pago />} /> {/* Nueva ruta de pago */}
           <Route path="/historial" element={<HistorialPedidos />} /> {/* Nueva ruta de pago */}
           <Route path="/envio" element={<SimulacionEnvio />} /> {/* Nueva ruta de pago */}
+          <Route path="/reporte" element={<ReporteUsuariosInfoCompleta />} /> {/* Nueva ruta de pago */}
 
         </Routes>
       </div>
